@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.appfood5.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class BaseActivity extends AppCompatActivity {
@@ -20,7 +21,8 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance("https://appfood5-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
         mAuth = FirebaseAuth.getInstance();
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
