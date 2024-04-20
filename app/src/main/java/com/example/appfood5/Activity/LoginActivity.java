@@ -3,6 +3,7 @@ package com.example.appfood5.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,9 +20,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-public class LoginActivity extends BaseActivity{
-
+public class LoginActivity extends BaseActivity {
     ActivityLoginBinding binding;
+    private TextView signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class LoginActivity extends BaseActivity{
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 //            return insets;
 //        });
+        signUp = (TextView) findViewById(R.id.signupBtn);
+        signUp.setOnClickListener(v -> goToSignUp());
     }
 
     private void setVariable() {
@@ -54,7 +57,9 @@ public class LoginActivity extends BaseActivity{
                 Toast.makeText(LoginActivity.this, "Xin hãy điền thông tin tài khoản và mật khẩu", Toast.LENGTH_SHORT).show();
             }
         });
-
-
+    }
+    private void goToSignUp() {
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 }

@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 public class SignupActivity extends BaseActivity{
 
     ActivitySignupBinding binding;
+    private TextView signIn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class SignupActivity extends BaseActivity{
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 //            return insets;
 //        });
+
+        signIn = (TextView) findViewById(R.id.loginBtn);
+        signIn.setOnClickListener(v -> goToSignIn());
     }
 
     private void setVariable() {
@@ -62,5 +68,10 @@ public class SignupActivity extends BaseActivity{
             });
 
             });
+    }
+
+    private void goToSignIn() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }
