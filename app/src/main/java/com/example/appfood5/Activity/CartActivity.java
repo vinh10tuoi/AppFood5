@@ -24,6 +24,7 @@ public class CartActivity extends AppCompatActivity {
     private ManagmentCart managmentCart;
 
     private double tax;
+    private double delivery;
 
 
     @Override
@@ -67,10 +68,11 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void calculateCart() {
-        double percentTax = 0.02; //phần trăm
-        double delivery=10; //tiền ship
+        double percentTax = 0.10; //phần trăm thuế
+        double percentDelivery= 0.05; //phần trăm tiền ship
 
         tax = Math.round(managmentCart.getTotalFee()*percentTax*100.0)/100;
+        delivery = Math.round(managmentCart.getTotalFee()*percentDelivery*100.0)/100;
         double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100)/100;
         double itemTotal = Math.round(managmentCart.getTotalFee() * 100)/100;
 

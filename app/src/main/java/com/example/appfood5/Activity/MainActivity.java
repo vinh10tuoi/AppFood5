@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -41,12 +44,28 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
+    private TextView emailTextView;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //Xử lý tên đăng nhập
+        //Khởi tạo FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
+        //Tìm TextView trong layout
+        emailTextView = findViewById(R.id.userEmail);
+        //Lấy thông tin người dùng đã đăng nhập
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null) {
+            String email = currentUser.getEmail();
+            emailTextView.setText(email);
+        } else {
+            emailTextView.setText("Vui lòng đăng nhập");
+        }
+        //Khởi tạo các layout chính từ các class
         initLocation();
         initTime();
         initPrice();
@@ -61,6 +80,7 @@ public class MainActivity extends BaseActivity {
 //            return insets;
 //        });
     }
+
 
     private void setVariable() {
         binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -100,20 +120,18 @@ public class MainActivity extends BaseActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot issue: snapshot.getChildren()){
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
                     }
-                    if(list.size()>0){
-                        binding.bestFoodView.setLayoutManager(new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
-                        RecyclerView.Adapter adapter=new BestFoodsAdapter(list);
+                    if (list.size() > 0) {
+                        binding.bestFoodView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                        RecyclerView.Adapter adapter = new BestFoodsAdapter(list);
                         binding.bestFoodView.setAdapter(adapter);
                     }
                     binding.progressBarBestFood.setVisibility(View.GONE);
                 }
             }
-
-
 
 
             @Override
@@ -198,9 +216,7 @@ public class MainActivity extends BaseActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 
@@ -211,17 +227,17 @@ public class MainActivity extends BaseActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot issue: snapshot.getChildren()){
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Price.class));
 
                     }
-                    ArrayAdapter<Price> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.sp_item,list);
+                    ArrayAdapter<Price> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.sp_item, list);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     binding.priceSp.setAdapter(adapter);
                 }
             }
-
+        ;
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -8,6 +8,7 @@
     tools:context=".Activity.DetailActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +21,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp">
+                android:layout_height="434dp">
 
                 <ImageView
                     android:id="@+id/pic"
@@ -28,8 +29,7 @@
                     android:layout_height="400dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                     />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/favBtn"
@@ -39,6 +39,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/pic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/pic"
+                    app:srcCompat="@drawable/favorite_white"
                     tools:srcCompat="@drawable/favorite_white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,12 +54,12 @@ public class DetailActivity extends BaseActivity {
                 .load(object.getImagePath())
                 .into(binding.pic);
 
-        binding.priceTxt.setText("VND" + object.getPrice());
+        binding.priceTxt.setText("VND" + " " + object.getPrice());
         binding.titleTxt.setText(object.getTitle());
         binding.descriptionTxt.setText(object.getDescription());
-        binding.rareTxt.setText(object.getStar() + "Đánh giá");
+        binding.rareTxt.setText(object.getStar() + " " + "Đánh giá");
         binding.ratingBar.setRating((float) object.getStar());
-        binding.totalTxt.setText((num * object.getPrice() + "VND"));
+        binding.totalTxt.setText((num * object.getPrice() + " " + "VND"));
 
         binding.plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override

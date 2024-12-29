@@ -21,8 +21,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Hôm nay ăn gì"
-                android:textColor="@color/blue_gray"
+                android:text="E-FOOD "
+                android:textAlignment="center"
+                android:textColor="@color/red"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -35,7 +36,7 @@
                 android:layout_marginEnd="16dp">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/userEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vinh"

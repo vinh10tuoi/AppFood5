@@ -40,20 +40,20 @@
                 android:text="Thời gian"
                 app:layout_constraintBottom_toBottomOf="@+id/starTxt"
                 app:layout_constraintEnd_toStartOf="@+id/textView14"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintStart_toEndOf="@+id/imageStar"
                 app:layout_constraintTop_toTopOf="@+id/starTxt" />
 
             <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imageStar"
+                android:layout_width="27dp"
+                android:layout_height="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/starTxt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.154"
                 app:layout_constraintStart_toEndOf="@+id/starTxt"
                 app:layout_constraintStart_toStartOf="@+id/titleTxt"
                 app:layout_constraintTop_toTopOf="@+id/starTxt"
-                app:layout_constraintVertical_bias="0.428"
+                app:srcCompat="@drawable/star"
                 tools:srcCompat="@drawable/star" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="4"
                 android:textColor="@color/blue_gray"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/titleTxt"
                 app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
